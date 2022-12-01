@@ -48,7 +48,8 @@ $('.category-bar').click(function() {
 		console.log($(this).attr("title"));
 }); // click
 
-$('#searchBtn').click(function() { 
+// 검색 후 요청 
+$('#searchBtn').click(function() {
 	self.location = "searchMusic"
 		+ "?rowsPerPage="
 		+ $('#rowsCount').val()
@@ -57,6 +58,25 @@ $('#searchBtn').click(function() {
 		+ "&keyword="
 		+ $('#keyword').val();
 }); //click
+
+window.onload = function() {
+    let a = document.getElementsByClassName("aaa");
+    let b = document.getElementsByClassName("bbb");
+    
+    let i;
+	for(let i =0; i < a.length; i++){
+    	b[i].addEventListener("click", function(){
+    		let cur = a[i];
+    		a[i].classList.remove('hidden');
+    		
+    		setTimeout(() => {
+    			cur.classList.add("hidden");
+    			
+			}, 2000);
+    		
+    		});//click
+    	} // for
+} // onload
 
 // function =======================================================
 function setIndex(no) {

@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login in</title>
+    <title>signUp</title>
     <script src="resources/myLib/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" href="resources/myLib/signup.css?after">
     <script defer type="text/javascript" src="resources/myLib/inCheck.js"></script>
@@ -17,10 +17,10 @@
 			flex-direction : column;
 			justify-content: center;
 			position: relative;
-			width: 100%;
+			width: 80%;
 			height: 1280px;
 			position: relative;
-		    background-image: url("resources/images/sign_img.png");
+		    background-image: url("resources/music_image/pexels-pixabay-159376.jpg");
 		    background-position: left;
 		    background-repeat: no-repeat;
 		    background-size: 70% 100%;    
@@ -77,7 +77,7 @@
                 </div>
                 <div class="mail-check-box">
                 <input id="checkno" class="mail-check-input" placeholder="인증번호 6자리를 입력해주세요!" maxlength="6">
-                <input type="button" class="btn-idcheck" id="email_auth_key" value="ID Check">
+                <input type="button" class="btn-idcheck" id="email_auth_key" value="E-mail Check">
                 </div>
                 <!-- ----11/16수정------------------------------------------ -->
                 <input type="button" id="emailCheck" value="E-Mail 인증번호 받기" >

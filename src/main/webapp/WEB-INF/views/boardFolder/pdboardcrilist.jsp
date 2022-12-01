@@ -79,10 +79,10 @@
 							<tr class="bordlist_main" height="40">
 								<td>${pdboard.seq}</td>
 								<td id="none">
-									<c:if test="${not empty loginID}">
+									<c:if test="${not empty loginID && userGrade == '프리미엄'}">
 										<a href="pdboardDetail?seq=${pdboard.seq}">${pdboard.songname}</a>
 									</c:if> 
-									<c:if test="${empty loginID}">
+									<c:if test="${empty loginID || userGrade != '프리미엄'}">
 				            			${pdboard.songname}
 				            		</c:if>
 				            	</td>
@@ -107,12 +107,12 @@
 			<!-- First, prev -->
 			<c:choose>
 				<c:when test="${pageMaker.prev && pageMaker.spageNo > 1}">
-					<a href="pdbcrilist${pageMaker.searchQuery(1)}">FP</a>&nbsp; 
+					<a href="pdbcrilist${pageMaker.searchQuery(1)}"><img src="resources/icons/LeftArrow.jpg"></a>&nbsp; 
 					<a href="pdbcrilist${pageMaker.searchQuery(pageMaker.spageNo-1)}">&lt;</a>&nbsp;&nbsp;
 								
 				</c:when>
 				<c:otherwise>
-					<font color="Gray">FF&nbsp;&lt;&nbsp;&nbsp;</font>
+					<font color="Gray"><img src="resources/icons/LeftArrow.jpg">&nbsp;&lt;&nbsp;&nbsp;</font>
 				</c:otherwise>
 			</c:choose>
 
@@ -133,10 +133,10 @@
 				<c:when test="${pageMaker.next && pageMaker.epageNo > 0}">
 
 					<a href="pdbcrilist${pageMaker.searchQuery(pageMaker.epageNo+1)}">&nbsp;&nbsp;&gt;</a>
-					<a href="pdbcrilist${pageMaker.searchQuery(pageMaker.lastPageNo)}">&nbsp;LP</a>
+					<a href="pdbcrilist${pageMaker.searchQuery(pageMaker.lastPageNo)}">&nbsp;<img src="resources/icons/RightArrow.jpg"></a>
 				</c:when>
 				<c:otherwise>
-					<font color="Gray">&nbsp;&nbsp;&gt;&nbsp;LP</font>
+					<font color="Gray">&nbsp;&nbsp;&gt;&nbsp;<img src="resources/icons/RightArrow.jpg"></font>
 				</c:otherwise>
 			</c:choose>
 		</div>

@@ -24,14 +24,14 @@
 	<!-- header =============================================== -->
 
 	<!-- nav =============================================== -->
-	<jsp:include page="/WEB-INF/views/include/nav.jsp" />	
+	<jsp:include page="/WEB-INF/views/include/nav.jsp" />
 	<!-- nav =============================================== -->
 
 	<!-- main =============================================== -->
 	<main class="main">
 		<aside class="hidden">
 			<div class="aside-container left">
-				<div class="aside-image" >
+				<div class="aside-image">
 					<img class="width-100 " src="resources/icons/cd.png" alt="">
 				</div>
 				<hr>
@@ -49,29 +49,6 @@
 				</div>
 			</div>
 		</aside>
-		
-		<%-- <c:if test="${not empty loginID }">
-		<aside class="hidden">
-			<div class="aside-container right">
-					<h4>My List</h4>
-					<hr>
-					<table>
-						<tr>
-							<th>번호</th>
-							<th>타이틀</th>
-							<th>삭제</th>
-						</tr>
-						<c:forEach items="${myList}" var="myMusic" varStatus="vs">
-						<tr>
-							<td>${vs.count}</td>
-							<td>${myMusic.mname}</td>
-							<td><a href="myListDelete?no=${myMusic.no}">삭제</a></td>
-						</tr>
-						</c:forEach>
-					</table>
-			</div>
-		</aside>
-		</c:if> --%>
 
 		<section class="category-container">
 			<div class="category-bar bold" title="종합">종합</div>
@@ -141,64 +118,61 @@
 							<c:if test="${pageMaker.cri.rowsPerPage == 100 }">
 								<td>${vs.count + pageMaker.cri.currPage * 100 - 100}</td>
 							</c:if>
-							
+
 							<td><img class="hidden" alt="#" src="${music.imagefile}">${music.mname}</td>
 							<td>${music.aname}</td>
 							<td>${music.count}</td>
-							
+
 							<c:if test="${userGrade=='프리미엄'}">
-			                     <td>
-			                     <span onclick="playMusic(${music.music_code})" title="${music.mname}">
-			                     <img   alt="듣기" src="resources/icons/play-button.png"></span>
-			                     </td>
-			                </c:if>
-			                <c:if test="${userGrade!='프리미엄'}">
-			                     <td>
-			                     <span title="${music.mname}">
-			                     <img   alt="듣기" src="resources/icons/play-button.png"></span>
-			                     </td>
-		                    </c:if>
+								<td><span onclick="playMusic(${music.music_code})"
+									title="${music.mname}"> <img alt="듣기"
+										src="resources/icons/play-button.png">
+								</span></td>
+							</c:if>
+							<c:if test="${userGrade!='프리미엄'}">
+								<td><span title="${music.mname}"> <img class="bbb"
+										alt="듣기" src="resources/icons/play-button.png"> <span
+										class="hidden aaa abs">프리미엄 결제 후 이용바랍니다.</span>
+								</span></td>
+
+							</c:if>
 							<c:if test="${not empty loginID }">
-								<td>
-								<a href="#" onclick="playList(${music.music_code})">
-								<img	alt="플레이 리스트" src="resources/icons/play-list.png"></a>
-								</td>
+								<td><a href="#" onclick="playList(${music.music_code})">
+										<img alt="플레이 리스트" src="resources/icons/play-list.png">
+								</a></td>
 							</c:if>
 							<c:if test="${empty loginID }">
-								<td>
-								<img	alt="플레이 리스트" src="resources/icons/play-list.png">
+								<td><img class="bbb" alt="플레이 리스트" src="resources/icons/play-list.png"><span
+										class="hidden aaa abs">프리미엄 결제 후 이용바랍니다.</span>
 								</td>
 							</c:if>
-							
+
 							<c:if test="${not empty loginID }">
-								<td>
-								<a onclick="myList(${music.music_code})">
-								<img alt="마이 리스트" src="resources/icons/my-list.png"></a>
-								<span class="hidden abs">목록 추가</span>
-								</td>
+								<td><a onclick="myList(${music.music_code})"> <img
+										alt="마이 리스트" src="resources/icons/my-list.png"></a> <span
+									class="hidden abs">목록 추가</span></td>
 							</c:if>
 							<c:if test="${empty loginID }">
-								<td>
-								<img alt="마이 리스트" src="resources/icons/my-list.png">
+								<td><img class="bbb" alt="마이 리스트" src="resources/icons/my-list.png"><span
+										class="hidden aaa abs">프리미엄 결제 후 이용바랍니다.</span>
 								</td>
 							</c:if>
-							
 						</tr>
 					</c:forEach>
 				</table>
 			</div>
-			
+
 			<c:if test="${empty hidden}">
 				<!-- Cri_Page -->
 				<div class="paging-container">
 					<!-- First, prev -->
 					<c:choose>
 						<c:when test="${pageMaker.prev && pageMaker.spageNo > 1}">
-							<a href="musicCri${pageMaker.searchQuery(1)}">FP</a>&nbsp; 
+							<a href="musicCri${pageMaker.searchQuery(1)}"><img src="resources/icons/LeftArrow.jpg"></a>&nbsp; 
 							<a href="musicCri${pageMaker.searchQuery(pageMaker.spageNo-1)}">&lt;</a>&nbsp;&nbsp;
 						</c:when>
 						<c:otherwise>
-							<font color="Gray">FF&nbsp;&lt;&nbsp;&nbsp;</font>
+							<font color="Gray"><img src="resources/icons/LeftArrow.jpg">&nbsp;&lt;&nbsp;&nbsp;</font>
 						</c:otherwise>
 					</c:choose>
 
@@ -217,10 +191,10 @@
 					<c:choose>
 						<c:when test="${pageMaker.next && pageMaker.epageNo > 0}">
 							<a href="musicCri${pageMaker.searchQuery(pageMaker.epageNo+1)}">&nbsp;&nbsp;&gt;</a>
-							<a href="musicCri${pageMaker.searchQuery(pageMaker.lastPageNo)}">&nbsp;LP</a>
+							<a href="musicCri${pageMaker.searchQuery(pageMaker.lastPageNo)}">&nbsp;<img src="resources/icons/RightArrow.jpg"></a>
 						</c:when>
 						<c:otherwise>
-							<font color="Gray">&nbsp;&nbsp;&gt;&nbsp;LP</font>
+							<font color="Gray">&nbsp;&nbsp;&gt;&nbsp;<img src="resources/icons/RightArrow.jpg"></font>
 						</c:otherwise>
 					</c:choose>
 				</div>
@@ -231,7 +205,7 @@
 	<!-- main =============================================== -->
 
 	<!-- footer =============================================== -->
-	<jsp:include page="/WEB-INF/views/include/footer.jsp" />	
+	<jsp:include page="/WEB-INF/views/include/footer.jsp" />
 	<!-- footer =============================================== -->
 
 </body>

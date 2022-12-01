@@ -1,13 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<script src="resources/myLib/jquery-3.2.1.min.js"></script>
 <script defer src="resources/myLib/navhide.js"></script>
-<script type="text/javascript">
-    
-</script>
-</head>
-
 <body>
 	<nav class="nav background-color-black vertical-middle">
 		<div class="nav-start">
@@ -47,8 +41,8 @@
 									<hr>
 									<a href="usertotal">유저 관리</a>
 									<a href="musictotal">음악 관리</a>
-									<a href="bcrilist">일반게시판 관리</a>
-									<a href="pdbcrilist">작곡게시판 관리</a>
+									<a href="adminBcrilist">일반게시판 관리</a>
+									<a href="adminpdBcrilist">작곡게시판 관리</a>
 								</c:if>
 								<!-- admin 관리 목록 -->
 							</div>

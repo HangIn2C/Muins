@@ -2,11 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <script src="resources/myLib/jquery-3.2.1.min.js"></script>
-<script type="text/javascript">
-	
-
-</script>
-
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<script src="resources/myLib/pay.js"></script>
 </head>
 	<!-- header =============================================== -->
 	<header class="header background-color-black">
@@ -40,8 +37,8 @@
 					<!-- admin 관리 목록 -->
 					<li><a href="usertotal">유저 관리</a></li>
 					<li><a href="musictotal">음악 관리</a></li>
-					<li><a href="bcrilist">일반게시판 관리</a></li>
-					<li><a href="pdbcrilist">작곡게시판 관리</a></li>
+					<li><a href="adminBcrilist">일반게시판 관리</a></li>
+					<li><a href="adminpdBcrilist">작곡게시판 관리</a></li>
 				</c:if>
 			</c:if>
 		</ul>
@@ -54,7 +51,7 @@
 				<a class="pay hidden" href="payf" target="_blank">구독결제</a>
 			</c:if>
 			<c:if test="${not empty loginID && userGrade == '일반'}">
-				<a class="pay" href="payf" target="_blank">구독결제</a>
+				<a class="pay" onclick="payf('${loginID}','${loginPhone}','${loginAddress}')" target="_blank">구독결제</a>
 			</c:if>
 			<c:if test="${empty loginID}">
 				<a class="pay" id="pay_check_click">구독결제</a>

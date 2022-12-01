@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<html>
-<head>
 <script defer src="resources/myLib/footer.js"></script>
-</head>
 	<!-- footer =============================================== -->
 	<footer class="fixed">
 		<div id="footer-img">
@@ -57,4 +54,3 @@
 		</div>
 	</footer>
 	<!-- footer =============================================== -->
-</html>

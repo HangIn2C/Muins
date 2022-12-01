@@ -188,6 +188,7 @@
 		#reply span {
 			font-weight: 700;
 			font-size: 15px;
+			word-break: break-word;
 		}
 
 		.vote {
@@ -222,7 +223,7 @@
         }
         
         .replycontent {
-        display:inline-block;
+        	display:inline-block;
         	height: 50px;
         }
         

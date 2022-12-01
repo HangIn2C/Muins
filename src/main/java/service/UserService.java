@@ -2,6 +2,7 @@ package service;
 
 import java.util.List;
 
+import vo.PayDateVO;
 import vo.UserVO;
 
 public interface UserService {
@@ -18,4 +19,9 @@ public interface UserService {
 	int userGradeUpdate(UserVO vo);
 
 	int userDelete(UserVO vo);
+	
+	int payDate(PayDateVO vo);
+	
+	PayDateVO paydateSelectOne(PayDateVO vo);
+	
 }

@@ -2,6 +2,7 @@ package mapperInterface;
 
 import java.util.List;
 
+import vo.PayDateVO;
 import vo.UserVO;
 
 public interface UserMapper {
@@ -18,4 +19,9 @@ public interface UserMapper {
 	int userGradeUpdate(UserVO vo);
 
 	int userDelete(UserVO vo);
+	
+	int payDate(PayDateVO vo); 
+	
+	PayDateVO paydateSelectOne(PayDateVO vo);
+	
 }

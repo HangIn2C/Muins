@@ -29,7 +29,7 @@
 	<main class="main">
 		<hr>
 		<div class="container">
-			<h2 class="writing-header">게시판</h2>
+			<h2 class="writing-header">일반 게시판</h2>
 			<c:if test="${not empty bselectone}">
 				<div class="date">
 					<span>${bselectone.regdate}</span>
@@ -55,7 +55,7 @@
 				<c:if test="${loginID == bselectone.id || loginID == 'admin'}">
 					<a href="boardDetail?jCode=U&seq=${bselectone.seq}" id="modifyBtn"
 						class="btnf btn-modify"><i class="fa fa-edit"></i> 수정</a>
-					<a href="bdelete?seq=${bselectone.seq}&root=${bselectone.root}"
+					<a onclick="bdeletealert(${bselectone.seq}, ${bselectone.root})"
 						id="removeBtn" class="btnf btn-remove"><i class="fa fa-trash"></i>
 						삭제</a>
 				</c:if>
@@ -97,7 +97,7 @@
 					<input id="seqid" name="seq" value="${bselectone.seq}" hidden>
 					<input id="rnoid" name="rno" value="${replyListF.rno}" hidden>
 					<textarea style="" "3" cols="30" id="comment" name="content"
-						placeholder="댓글을 입력하세요"></textarea>
+						placeholder="댓글을 입력하세요(200자 이하)"></textarea>
 					<br>
 					<div class="reply-btn">
 						<button type="button" class="btn pull-right btn-success" onclick="getReplyF(${bselectone.seq})"

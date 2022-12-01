@@ -89,10 +89,12 @@
 		<!-- ----11/16수정------------------------------------------ -->
 		<!-- ===== UserGrade ===== -->
 		<label><b>UserGrade</b></label>
-		<div>
-			<input type="text" placeholder="${user.usergrade}" id="usergrade" name="usergrade"
-				readonly>
+		<div id="usergradebox" >
+			<input type="text" value="${user.usergrade}" id="usergrade" name="usergrade" readonly>
+			
+			<input type="text" value="${paydate.pay_date} ~ ${paydate.end_date}" id="psydate" name="psydate" readonly>
 		</div>
+
 		<!-- ----11/16수정------------------------------------------ -->
 
 		<!-- ===== E-Mail ===== -->

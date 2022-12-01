@@ -6,7 +6,7 @@
 
 	<sql id="bsearchall">
 		<if test="keywords != null">
-			<bind name="keyVal" value="'%'+keyword+'%'" />
+			<bind name="keyVal" value="'%'+keywords+'%'" />
 		</if>
 		title like #{keyVal}
 		or id like #{keyVal}
@@ -18,12 +18,12 @@
 		where
 		<include refid="bsearchall"></include>
 		order by seq desc
-		limit 1, 10
+		limit 0, 10
 	</select>
 
 	<sql id="pdbsearchall">
 		<if test="keywords != null">
-			<bind name="keyVal" value="'%'+keyword+'%'" />
+			<bind name="keyVal" value="'%'+keywords+'%'" />
 		</if>
 		songname like #{keyVal}
 		or id like #{keyVal}
@@ -34,7 +34,7 @@
 		where
 		<include refid="pdbsearchall"></include>
 		order by seq desc
-		limit 1, 10
+		limit 0, 10
 	</select>
 
 	<!-- ㅡㅡㅡㅡㅡㅡ통합검색ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
@@ -78,7 +78,7 @@
 	<select id="bsearchList" resultType="vo.BoardVO">
 		select seq, title, id, regdate, cnt, root, step, indent
 		from board
-		where( seq>0 and indent=0
+		where( seq>0
 		<include refid="search"></include>
 		order by root desc, step asc
 		limit #{sno}, #{rowsPerPage}
@@ -158,6 +158,7 @@
 	<select id="homeBoardList" resultType="vo.BoardVO">
 		select * from board order by vote desc
 	</select>
+	
 	
 	<!-- ㅡㅡㅡㅡㅡㅡvoteTableㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
 <!-- board -->	

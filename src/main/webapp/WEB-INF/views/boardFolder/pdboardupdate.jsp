@@ -30,7 +30,7 @@
 	<main class="main">
 		<hr>
 		<div class="container">
-			<h2 class="writing-header">게시판</h2>
+			<h2 class="writing-header">작곡 게시판</h2>
 			<form id="form" class="frm" action="pdbupdate"
 				enctype="multipart/form-data" method="post">
 				<div class="date">
@@ -57,10 +57,10 @@
 				<button onclick="goBack()" id="listBtn" class="btnf btn-list">
 					<i class="fa fa-bars"></i> 취소
 				</button>
-				<input name="id" value="${pdbselectone.id}" hidden> <input
-					name="seq" value="${pdbselectone.seq}" hidden> <input
-					name="cnt" value="${pdbselectone.cnt}" hidden> <input
-					name="regdate" value="${pdbselectone.regdate}" hidden>
+				<input name="id" value="${pdbselectone.id}" hidden> 
+				<input name="seq" value="${pdbselectone.seq}" hidden> 
+				<input name="cnt" value="${pdbselectone.cnt}" hidden> 
+				<input name="regdate" value="${pdbselectone.regdate}" hidden>
 			</form>
 		</div>
 	</main>

@@ -16,4 +16,5 @@ public class UserVO {
 	private String birthdate; // 19920208
 	
 	private String createtime; // 자동 생성
+	private String end_date;
 }

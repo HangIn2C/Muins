@@ -8,7 +8,7 @@
 <link rel="shortcut icon" href="#">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>music list</title>
+<title>music player pop up</title>
 <script src="../myLib/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
 function playMusic(no) {

@@ -24,7 +24,9 @@ public class ReplyController {
 
 	// 댓글목록
 	@RequestMapping(value = "/breplyf", method = RequestMethod.POST)
-	public ModelAndView breplyf(HttpServletRequest request, HttpServletResponse response,ModelAndView mv, ReplyVO vo) {
+	public ModelAndView breplyf(HttpServletRequest request, HttpServletResponse response,
+									ModelAndView mv, ReplyVO vo) {
+		
 		List<ReplyVO> list = replyService.readReply(vo.getSeq());
 		if ( list!=null ) {
 			mv.addObject("replyListF", list);
@@ -41,28 +43,22 @@ public class ReplyController {
 	@RequestMapping(value = "/brinsert", method = RequestMethod.POST)
 	public ModelAndView brinsert(HttpServletRequest request, HttpServletResponse response, 
 			ModelAndView mv, ReplyVO vo,  RedirectAttributes rttr) {
-
 		String uri = "redirect:boardDetail?seq="+vo.getSeq();
-		
-
 		vo.setRno_next(vo.getRno()+1);
 		if(replyService.brinsert(vo) > 0) {
 			rttr.addFlashAttribute("message", "- 댓글 등록성공! -");
 		} else {
-
 			rttr.addFlashAttribute("message", "- 댓글 등록실패ㅠㅠ, 다시 하세요. -");
 			uri = "/boardFolder/boardDetail";
 		}
-				
-		// 3. 결과(ModelAndView)전달
 		mv.setViewName(uri);
 		return mv;
 	} //댓글입력
 	
 	// 댓글 수정
 		@RequestMapping(value = "/brupdate", method = RequestMethod.POST)
-		public ModelAndView brupdate(HttpServletRequest request, HttpServletResponse response, ModelAndView mv, ReplyVO vo) {
-
+		public ModelAndView brupdate(HttpServletRequest request, HttpServletResponse response, 
+										ModelAndView mv, ReplyVO vo) {
 			if(replyService.brupdate(vo) > 0) {
 				mv.addObject("message", "- 댓글 수정 성공!!!, -");
 			} else {
@@ -75,16 +71,13 @@ public class ReplyController {
 	@RequestMapping(value = "/brdelete")
 	public ModelAndView brdelete(HttpServletRequest request, HttpServletResponse response, 
 			ModelAndView mv, ReplyVO vo, RedirectAttributes rttr) {
-
 		String uri = "redirect:boardDetail?seq="+vo.getSeq();
-
 		if(replyService.brdelete(vo) > 0) { 
 			rttr.addFlashAttribute("message", "- 댓글삭제 성공 -");
 		} else {
 			rttr.addFlashAttribute("message", "- 댓글삭제 실패, 다시 하세요 -");
 			uri = "redirect:boardDetail?seq="+vo.getSeq();
 		}
-
 		mv.setViewName(uri);
 		return mv;
 	} // 댓글 삭제

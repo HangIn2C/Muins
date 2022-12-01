@@ -125,6 +125,7 @@ $(function() {
     	 	email = $('#email').val()
     	 } else {
     		 email = $('#email').val() + $('#selectemail').val();
+    	 
     	 }
     	 
     	 if(email == ''){
@@ -180,6 +181,8 @@ function inCheck() {
 	if (nicknameCheck == false) { $('#nicknamemessage').html(' Nick-Name을 확인하세요 !!'); }
 	if (birthdateCheck == false) { $('#birthdatemessage').html(' Birth-Day를 확인하세요 !!'); }
 	if (phoneCheck == false) { $('#phonemessage').html(' Phone-Number를 확인하세요 !!'); }
+	if (emailAuthCheck == false) { $('#emailmessage').html(' E-Mail인증은 필수 입니다 !!'); }
+	
 
 	if (idCheck && passwordCheck && password2Check && nameCheck &&
 		emailCheck && nicknameCheck && birthdateCheck && phoneCheck && emailAuthCheck) {

@@ -11,7 +11,6 @@
 <link rel="stylesheet" href="resources/myLib/board.css">
 <script src="resources/myLib/jquery-3.2.1.min.js"></script>
 <script defer src="resources/myLib/board.js"></script>
-
 </head>
 <body>
 <div class="container_comment">
@@ -39,7 +38,7 @@
 											</a>
 											<a onclick="deleteReply(${replyListF.seq},${replyListF.rno})" id="modifyBtn" class="btnf btn-modify">
 												<span class="fa fa-edit"></span>삭제
-											</a><br>
+											</a>
 										</c:if>
 										<c:if test="${loginID != replyListF.id}">
 											<a id="modifyBtnr" class="btnf btn-modify aaa">

@@ -71,7 +71,7 @@ public class BoardController {
 		mv.setViewName("/boardFolder/boardcrilist");
 		return mv;
 	} // 일반게시판 페이징전체목록
-
+	
 	// 새글등록폼
 	@RequestMapping(value = "/boardinsertform")
 	public ModelAndView boardinsertform(HttpServletRequest request, HttpServletResponse response, ModelAndView mv) {
@@ -97,7 +97,8 @@ public class BoardController {
 
 	// 내글 수정
 	@RequestMapping(value = "/bupdate", method = RequestMethod.POST)
-	public ModelAndView bupdate(HttpServletRequest request, HttpServletResponse response, ModelAndView mv, BoardVO vo) {
+	public ModelAndView bupdate(HttpServletRequest request, HttpServletResponse response, 
+									ModelAndView mv, BoardVO vo) {
 
 		String uri = "redirect:bcrilist";
 		mv.addObject("bselectone",vo);
@@ -170,12 +171,12 @@ public class BoardController {
 		return mv;
 	} // 글상세보기 & 조회수증가 & 댓글갯수 확인
 	
-	
+	// 추천수 증가
 	@RequestMapping(value = "/bvoteUp")
 	public void bvoteUp(HttpServletRequest request, HttpServletResponse response, 
 			BoardVO vo) {
 		service.bvoteUp(vo);
-	}
+	} // 추천수 증가
 	
 	// 추천수 감소
 	@RequestMapping(value = "/bvoteDown")
@@ -278,7 +279,7 @@ public class BoardController {
 		String realPath = request.getRealPath("/"); 
 
 		if ( realPath.contains(".eclipse.") ) 
-			realPath = "E:\\Mtest\\myWork\\portfolio\\src\\main\\webapp\\resources\\userMusicFile\\" + vo.getId()+"\\";
+			realPath = "C:\\Mtest\\myWork\\portfolio\\src\\main\\webapp\\resources\\userMusicFile\\" + vo.getId()+"\\";
 		else  
 			realPath += "resources\\userMusicFile\\" + vo.getId()+"\\";
 
@@ -318,7 +319,7 @@ public class BoardController {
 		String realPath = request.getRealPath("/");
 
 		if ( realPath.contains(".eclipse.") ) {
-			realPath = "E:\\Mtest\\myWork\\portfolio\\src\\main\\webapp\\resources\\userMusicFile\\" + vo.getId()+"\\";
+			realPath = "C:\\Mtest\\myWork\\portfolio\\src\\main\\webapp\\resources\\userMusicFile\\" + vo.getId()+"\\";
 		} else {
 			realPath += "resources\\userMusicFile\\" + vo.getId()+"\\";
 		}
@@ -432,6 +433,78 @@ public class BoardController {
 	} // 작곡게시판 노래 듣기
 	
 	//---pdboard-------------------------------------------------------------------------------
+	
+	
+	//---admin---------------------------------------------------------------------------------
+	// 관리자용 일반게시판 페이징전체목록
+	@RequestMapping(value = "/adminBcrilist")
+	public ModelAndView adminBcrilist(HttpServletRequest request, HttpServletResponse response, 
+			ModelAndView mv, Criteria cri, PageMaker pageMaker) {
+		
+		cri.setSnoEno();
+		mv.addObject("boardlist", service.bsearchList(cri));	
+		
+		// 3) View 처리
+		pageMaker.setCri(cri);
+		pageMaker.setTotalRowsCount(service.bsearchCount(cri));
+		
+		mv.addObject("pageMaker", pageMaker);
+		mv.setViewName("/admin/admin_boardcrilist");
+		return mv;
+	} // 관리자용 일반게시판 페이징전체목록
+	
+	// 관리자용 일반게시판 글삭제
+	@RequestMapping(value = "/adminBdelete")
+	public ModelAndView adminBdelete(HttpServletRequest request, HttpServletResponse response, 
+			ModelAndView mv, BoardVO vo, RedirectAttributes rttr) {
+
+		String uri = "redirect:adminBcrilist";
+
+		if(service.bdelete(vo) > 0) { 
+			rttr.addFlashAttribute("message", "- 글삭제 성공 -");
+		} else {
+			rttr.addFlashAttribute("message", "- 글삭제 실패, 다시 하세요 -");
+		}
+
+		mv.setViewName(uri);
+		return mv;
+	} // 관리자용 일반게시판 글삭제
+	
+	// 관리자용 작곡게시판 페이징전체목록
+		@RequestMapping(value = "/adminpdBcrilist")
+		public ModelAndView adminpdBcrilist(HttpServletRequest request, HttpServletResponse response, 
+				ModelAndView mv, Criteria cri, PageMaker pageMaker) {
+
+			cri.setSnoEno();
+
+			mv.addObject("pdboardlist", service.pdbsearchList(cri)); // ver02
+
+			pageMaker.setCri(cri);
+			pageMaker.setTotalRowsCount(service.pdbsearchCount(cri));	 // ver02: 조건과 일치하는 Rows의 갯수
+
+			mv.addObject("pageMaker", pageMaker);
+			mv.setViewName("/admin/admin_pdboardcrilist");
+			return mv;
+		} // 작곡게시판 페이징전체목록
+		
+		// 관리자용 작곡게시판 글삭제
+		@RequestMapping(value = "/adminpdBdelete")
+		public ModelAndView adminpdBdelete(HttpServletRequest request, HttpServletResponse response, 
+				ModelAndView mv, PdboardVO vo, RedirectAttributes rttr) {
+
+			String uri = "redirect:adminpdBcrilist";
+
+			if(service.pdbdelete(vo) > 0) { 
+				rttr.addFlashAttribute("message", "- 글삭제 성공 -");
+			} else {
+				rttr.addFlashAttribute("message", "- 글삭제 실패, 다시 하세요 -");
+			}
+
+			mv.setViewName(uri);
+			return mv;
+		} // 관리자용 작곡게시판 글삭제
+	
+	
 
 }
 

@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>userdetail</title>
+<title>userUpdate</title>
 <script src="resources/myLib/jquery-3.2.1.min.js"></script>
 <link rel="stylesheet" href="resources/myLib/bootstrap.min.css">
 <link rel="stylesheet" href="resources/myLib/main.css?after">
@@ -89,9 +89,10 @@
 		<!-- ----11/16수정------------------------------------------ -->
 		<!-- ===== UserGrade ===== -->
 		<label><b>UserGrade</b></label>
-		<div>
-			<input type="text" value="${user.usergrade}" id="usergrade" name="usergrade"
-				readonly>
+		<div id="usergradebox" >
+			<input type="text" value="${user.usergrade}" id="usergrade" name="usergrade" readonly>
+			
+			<input type="text" value="${paydate.pay_date} ~ ${paydate.end_date}" id="psydate" name="psydate" readonly>
 		</div>
 		<!-- ----11/16수정------------------------------------------ -->
 		

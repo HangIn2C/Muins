@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import service.MusicService;
 import service.UserService;
+import vo.PayDateVO;
 import vo.PlayListVO;
 import vo.UserVO;
 
@@ -65,17 +66,18 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/login", method = RequestMethod.POST)
-	public ModelAndView login(HttpServletRequest request, HttpServletResponse response, ModelAndView mv, UserVO vo) {
+	public ModelAndView login(HttpServletRequest request, HttpServletResponse response, ModelAndView mv, UserVO vo, RedirectAttributes rttr) {
 		// 1) request 처리
 		String password = vo.getPassword();
 		String uri = "/userFolder/login";
 		
 		PlayListVO pvo = new PlayListVO();
-		List<PlayListVO> list = new ArrayList<PlayListVO>(); 
+		List<PlayListVO> list = new ArrayList<PlayListVO>();
 		
 		// 2) service 처리
 		//vo.setId(id);
 		vo = service.userSelectOne(vo);
+		
 		if ( vo != null ) { 
 			// ID 는 일치 -> Password 확인
 			
@@ -84,7 +86,9 @@ public class UserController {
 				request.getSession().setAttribute("loginName", vo.getName());
 				request.getSession().setAttribute("loginPW", password);
 				request.getSession().setAttribute("userGrade", vo.getUsergrade());
-				
+				request.getSession().setAttribute("loginPhone", vo.getPhone());
+				request.getSession().setAttribute("loginAddress", vo.getAddress());
+				request.getSession().setAttribute("endDate", vo.getEnd_date());
 				pvo.setId(vo.getId());
 				list = mservice.selectPlayMusic(pvo);
 				request.getSession().setAttribute("splayList", mservice.selectPlayMusic(pvo));
@@ -178,11 +182,15 @@ public class UserController {
 		
 	@RequestMapping(value = "/userDetail")
 	public ModelAndView userDetail(HttpServletRequest request, HttpServletResponse response,
-			ModelAndView mv, UserVO vo) {
+			ModelAndView mv, UserVO vo, PayDateVO po) {
 		String uri = "/userFolder/userdetail";
 		vo.setId(request.getParameter("id"));
 		vo = service.userSelectOne(vo);
 		mv.addObject("user", vo);
+		
+		po.setId(request.getParameter("id"));
+		po = service.paydateSelectOne(po);
+		mv.addObject("paydate", po);
 		mv.setViewName(uri);
 		return mv;
 	}
@@ -195,12 +203,16 @@ public class UserController {
 	/* === 유저 업데이트 === */
 	@RequestMapping(value = "/userUpdatef")
 	public ModelAndView userUpdatef(HttpServletRequest request, HttpServletResponse response,
-			ModelAndView mv, UserVO vo) {
+			ModelAndView mv, UserVO vo, PayDateVO po) {
 		String uri = "/userFolder/userUpdate";
 		vo.setId(request.getParameter("id"));
 		vo = service.userSelectOne(vo);
 		vo.setEmail(vo.getEmail().substring(0, vo.getEmail().indexOf('@')));
 		mv.addObject("user", vo);
+		
+		po.setId(request.getParameter("id"));
+		po = service.paydateSelectOne(po);
+		mv.addObject("paydate", po);
 		mv.setViewName(uri);
 		return mv;
 	}

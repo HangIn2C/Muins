@@ -31,7 +31,7 @@
 	<main class="main">
 		<hr>
 		<div class="container">
-			<h2 class="writing-header">게시판</h2>
+			<h2 class="writing-header">작곡 게시판</h2>
 			<div class="date">
 				<br>
 			</div>

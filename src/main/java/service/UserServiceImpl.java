@@ -6,12 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import mapperInterface.UserMapper;
+import vo.PayDateVO;
 import vo.UserVO;
 
 @Service
 public class UserServiceImpl implements UserService {
 	@Autowired
 	UserMapper mapper;
+	
 	
 	@Override
 	public List<UserVO> userTotal() {
@@ -40,11 +42,23 @@ public class UserServiceImpl implements UserService {
 	
 	public int userGradeUpdate(UserVO vo) {
 		return mapper.userGradeUpdate(vo);
+		
 	}
 
 	@Override
 	public int userDelete(UserVO vo) {
 		return mapper.userDelete(vo);
 	} //delete
+	
+	public int payDate(PayDateVO vo) {
+		return mapper.payDate(vo);
+		
+	}
+	
+	public PayDateVO paydateSelectOne(PayDateVO vo) {
+		return mapper.paydateSelectOne(vo);
+	}
+	
+	
 
 }

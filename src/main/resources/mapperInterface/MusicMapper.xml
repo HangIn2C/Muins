@@ -16,7 +16,7 @@
 		where
 		<include refid="msearchall"></include>
 		order by music_code desc
-		limit 1, 10
+		limit 0, 10
 	</select>
 
 	<!--  -->
@@ -113,7 +113,8 @@
 	</update>
 	
 	<delete id="musicDelete">
-		delete from music where music_code = #{music_code}
+		delete from music where music_code = #{music_code};
+		update music set music_code = (music_code - 1) where music_code > #{music_code}
 	</delete>
 	
 	<!-- ===== myList ===== -->

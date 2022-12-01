@@ -52,7 +52,7 @@
 		<beans:property name="driverClassName"
 			value="com.mysql.cj.jdbc.Driver" />
 		<beans:property name="url"
-			value="jdbc:mysql://localhost:3306/music?useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true" />
+			value="jdbc:mysql://localhost:3306/music?useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true&amp;allowMultiQueries=true&amp;" />
 		<beans:property name="username" value="root" />
 		<beans:property name="password" value="12345" />
 	</beans:bean>
@@ -69,7 +69,7 @@
 	<beans:bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<beans:property name="host" value="smtp.naver.com" />
 		<beans:property name="port" value="465" /><!-- 465 or 25 -->
-		<beans:property name="username" value="" />
+		<beans:property name="username" value="@naver.com" />
 		<beans:property name="password" value="" />
 		<beans:property name="javaMailProperties">
 			<beans:props>

@@ -23,7 +23,7 @@
 		select IFNULL(max(rno),0)+1 from reply
 	</selectKey>
 		insert into reply (rno, seq, content, id, rno_next, root, step, indent ) values
-		(#{rno}, #{seq},#{content},#{id}, (SELECT IFNULL(MAX(rno_next) + 1, 1) 
+		(#{rno}, #{seq},#{content},#{id}, (SELECT IFNULL(MAX(rno_next) + 2, 2) 
 		from reply b), #{rno}, #{step}, #{indent});
 	</insert>
 	
@@ -32,7 +32,7 @@
 		select IFNULL(max(rno),0)+1 from reply
 	</selectKey>
 		insert into reply (rno, seq, content, id, rno_next, root, step, indent ) values
-		(#{rno}, #{seq},#{content},#{id}, (SELECT IFNULL(MAX(rno_next) + 1, 1) 
+		(#{rno}, #{seq},#{content},#{id}, (SELECT IFNULL(MAX(rno_next) + 2, 2) 
 		from reply b), #{root}, #{step}, #{indent});
 	</insert>
 	
@@ -73,7 +73,7 @@
 		select IFNULL(max(rno),0)+1 from pdreply
 	</selectKey>
 		insert into pdreply (rno, seq, content, id, rno_next, root, step, indent ) values
-		(#{rno}, #{seq},#{content},#{id}, (SELECT IFNULL(MAX(rno_next) + 1, 1) 
+		(#{rno}, #{seq},#{content},#{id}, (SELECT IFNULL(MAX(rno_next) + 2, 2) 
 		from pdreply b), #{rno}, #{step}, #{indent});
 	</insert>
 	<insert id="pdbrreinsert">
@@ -81,7 +81,7 @@
 		select IFNULL(max(rno),0)+1 from pdreply
 	</selectKey>
 		insert into pdreply (rno, seq, content, id, rno_next, root, step, indent ) values
-		(#{rno}, #{seq},#{content},#{id}, (SELECT IFNULL(MAX(rno_next) + 1, 1) 
+		(#{rno}, #{seq},#{content},#{id}, (SELECT IFNULL(MAX(rno_next) + 2, 2) 
 		from pdreply b), #{root}, #{step}, #{indent});
 	</insert>
 	

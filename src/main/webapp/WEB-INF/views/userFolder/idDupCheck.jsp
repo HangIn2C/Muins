@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>** ID 중복 확인 **</title>
+<title>idDupCheck</title>
 <link rel="stylesheet" type="text/css" href="resources/myLib/myStyle.css">
 <script src="resources/myLib/jquery-3.2.1.min.js"></script>
 <script defer src="resources/myLib/inCheck.js"></script>

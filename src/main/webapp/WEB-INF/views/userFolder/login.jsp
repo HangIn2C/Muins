@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>login</title>
     <script src="resources/myLib/jquery-3.2.1.min.js"></script>
     <script defer src="resources/myLib/inCheck.js"></script>
     <script type="text/javascript">
@@ -17,7 +17,7 @@
 	$(function() {
 		$('#id').focus();
 		//--------------------------idCheck--------------------------------
-		$('#id').keydown(function(e) {
+		$('#id').keydown(function(e) { // enterKey 누르면 다음으로 이동 -> keydown() 자동적으로 focusout 이벤트 발생하게됨
 			if(e.which==13) {
 				e.preventDefault();
 				// => form 에 submit 이 있는경우
@@ -75,7 +75,7 @@
 
         .bg {
             position: relative;
-            background-image: url("resources/images/login_img.jpg");
+            background-image: url("resources/music_image/pexels-moose-photos-1037992.jpg");
             width: 100%;
             height: 100%;
             background-position: left;
@@ -87,7 +87,7 @@
         .container {
             position: absolute;
             border: solid 1px lightgray;
-            right: 0;
+            right: 200px;
             top: 50%;
             transform: translateY(-50%);
             margin: 50px;

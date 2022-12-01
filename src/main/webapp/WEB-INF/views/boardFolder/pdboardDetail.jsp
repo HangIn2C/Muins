@@ -30,7 +30,7 @@
 	<main class="main">
 		<hr>
 		<div class="container">
-			<h2 class="writing-header">게시판</h2>
+			<h2 class="writing-header">작곡 게시판</h2>
 			<c:if test="${not empty pdbselectone}">
 				<div class="date">
 					<span>${pdbselectone.regdate}</span>
@@ -83,7 +83,7 @@
 					<a href="pdboardDetail?jCode=U&seq=${pdbselectone.seq}"
 						id="modifyBtn" class="btnf btn-modify"><i class="fa fa-edit"></i>
 						수정</a>
-					<a href="pdbdelete?seq=${pdbselectone.seq}&root=${pdbselectone.root}"
+					<a onclick="pdbdeletealert(${pdbselectone.seq},${pdbselectone.root})"
 						id="removeBtn" class="btnf btn-remove"><i class="fa fa-trash"></i>
 						삭제</a>
 				</c:if>
@@ -123,9 +123,9 @@
 					</div>
 					<input name="id" value="${loginID}" hidden> 
 					<input id="pseqid" name="seq" value="${pdbselectone.seq}" hidden>
-					<input id="prnoid" name="seq" value="${pdreplyListF.rno}" hidden>
+					<input id="prnoid" name="rno" value="${pdreplyListF.rno}" hidden>
 					<textarea style="" "3" cols="30" id="comment" name="content"
-						placeholder="댓글을 입력하세요"></textarea>
+						placeholder="댓글을 입력하세요(200자 이하)"></textarea>
 					<br>
 					<div class="reply-btn">
 						<button type="button" class="btn pull-right btn-success" onclick="getpdReplyF(${pdbselectone.seq})"

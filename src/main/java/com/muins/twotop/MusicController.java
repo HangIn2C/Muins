@@ -263,7 +263,7 @@ public class MusicController {
 
 		if (service.musicDelete(vo) > 0)
 			;
-		mv.setViewName("redirect:musicTotal");
+		mv.setViewName("redirect:musictotal");
 		return mv;
 	} // musicDelete
 
