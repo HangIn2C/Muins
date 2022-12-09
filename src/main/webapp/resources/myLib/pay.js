@@ -1,6 +1,6 @@
 function payf(id, phone, address){
     var IMP = window.IMP;
-    IMP.init('imp03314248');
+    IMP.init('');
     var msg;
     
     IMP.request_pay({
